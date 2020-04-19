@@ -1,3 +1,19 @@
 .hello {
   color: red;
+  background: url('./icon.png');
+  font-family: 'MyFont2';
+}
+
+@font-face {
+  font-family: 'MyFont1';
+  font-weight: 400;
+  font-style: normal;
+  src: url('./Inconsolata-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'MyFont2';
+  font-weight: 400;
+  font-style: normal;
+  src: url('./Merriweather-Regular.ttf');
 }
