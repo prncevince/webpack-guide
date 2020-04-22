@@ -1,3 +1,7 @@
 export default function printMe () {
-  conssole.log('I get called from print.js!')
+  console.log(
+    `My index.html gets deleted when using the clean-webpack-plugin.
+    \nI get called from print.js!
+    \nIt's alive!`
+  )
 }
