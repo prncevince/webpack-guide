@@ -5,6 +5,7 @@ module.exports = {
       2,
       'never',
       ['sentence-case', 'start-case', 'pascal-case', 'upper-case']
-    ]
+    ],
+    'subject-full-stop': [2, 'never', '.']
   }
 }
