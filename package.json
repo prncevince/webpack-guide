@@ -15,9 +15,14 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "clean-webpack-plugin": "^3.0.0",
+    "commitiquette": "^1.0.4",
+    "commitizen": "^4.0.4",
     "css-loader": "^3.5.3",
     "csv-loader": "^3.0.3",
+    "cz-conventional-changelog": "^3.1.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.20.2",
@@ -37,5 +42,10 @@
   },
   "dependencies": {
     "lodash": "^4.17.15"
+  },
+  "config": {
+    "commitizen": {
+      "path": "commitiquette"
+    }
   }
 }
