@@ -5,13 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 module.exports = {
   mode: 'development',
   entry: {
-    index: './src/index.js',
-    another: './src/another-module.js'
-  },
-  optimization: {
-    splitChunks: {
-      chunks: 'all'
-    }
+    index: './src/index.js'
   },
   devtool: 'inline-source-map',
   devServer: {
@@ -33,6 +27,7 @@ module.exports = {
     })
   ],
   output: {
+    chunkFilename: '[name].bundle.js',
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
     /* publicPath: '/' */
