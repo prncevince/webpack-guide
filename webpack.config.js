@@ -5,8 +5,15 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 module.exports = {
   mode: 'development',
   entry: {
-    index: './src/index.js',
-    another: './src/another-module.js'
+    shared: 'lodash',
+    index: {
+      import: './src/index.js',
+      dependOn: 'shared'
+    },
+    another: {
+      import: './src/another-module.js',
+      dependOn: 'shared'
+    }
   },
   devtool: 'inline-source-map',
   devServer: {
