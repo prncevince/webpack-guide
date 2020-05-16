@@ -1,9 +1,7 @@
-import _ from 'lodash'
 import printMe from './print.js'
 import './style.css'
 
 function getComponent () {
-
   return import(/* webpackChunkName: "lodash" */ 'lodash').then(({ default: _ }) => {
     const element = document.createElement('div')
 
@@ -16,9 +14,7 @@ function getComponent () {
 
     element.appendChild(btn)
     return element
-
   }).catch(error => 'An error occurred while loading the component')
-
 }
 
 // Store the element to re-render on print.js changes
@@ -26,7 +22,7 @@ getComponent().then(component => {
   document.body.appendChild(component)
 })
 
-// let element = getComponent()
+const element = getComponent()
 
 if (module.hot) {
   module.hot.accept('./print.js', function () {
