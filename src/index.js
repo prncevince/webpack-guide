@@ -1,20 +1,16 @@
 import printMe from './print.js'
 import './style.css'
 
-function getComponent () {
-  return import(/* webpackChunkName: "lodash" */ 'lodash').then(({ default: _ }) => {
-    const element = document.createElement('div')
+async function getComponent() {
+  const element = document.createElement('div')
+  const { default: _ } = await import(/* webpackChunkName: "lodash" */ 'lodash')
 
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ')
-
-    const btn = document.createElement('button')
-
-    btn.innerHTML = 'Click me and check the console!'
-    btn.onclick = printMe
-
-    element.appendChild(btn)
-    return element
-  }).catch(error => 'An error occurred while loading the component')
+  element.innerHTML = _.join(['Hello', 'webpack'], ' ')
+  const btn = document.createElement('button')
+  btn.innerHTML = 'Click me and check the console!'
+  btn.onclick = printMe
+  element.appendChild(btn)
+  return element
 }
 
 // Store the element to re-render on print.js changes
