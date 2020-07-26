@@ -1,32 +1,22 @@
-import printMe from './print.js'
+import _ from 'lodash'
 import './style.css'
 
-async function getComponent() {
+function component() {
   const element = document.createElement('div')
-  const { default: _ } = await import(/* webpackChunkName: "lodash" */ 'lodash')
-
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ')
   const btn = document.createElement('button')
+  const br = document.createElement('br')
+
   btn.innerHTML = 'Click me and check the console!'
-  btn.onclick = printMe
+  element.innerHTML = _.join(['Hello', 'webpack'], ' ')
+  element.appendChild(br)
   element.appendChild(btn)
-  return element
-}
-
-// Store the element to re-render on print.js changes
-getComponent().then(component => {
-  document.body.appendChild(component)
-})
-
-const element = getComponent()
-
-if (module.hot) {
-  module.hot.accept('./print.js', function () {
-    console.log('Accept thee updated printMe module!')
-    // document.body.removeChild(element) // Disconnects Dev Server
-    // Re-render the "component" to update the click handler
-    getComponent().then(component => {
-      document.body.appendChild(component)
-    })
+  // Note that because a network request is involved, some indication
+  // of loading would need to be shown in a production-level site/app.
+  btn.onclick = e => import(/* webpackChunkName: "print" */ './print').then(module => {
+    const print = module.default
+    print()
   })
-}
+  return element
+} 
+
+document.body.appendChild(component())
