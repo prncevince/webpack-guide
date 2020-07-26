@@ -32,6 +32,6 @@ module.exports = {
     /* publicPath: 'dist/' */
   },
   optimization: {
-    tuntimeChunk: 'single'
+    runtimeChunk: 'single'
   }
 }
