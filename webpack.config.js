@@ -23,13 +23,15 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Development'
+      title: 'Caching'
     })
   ],
   output: {
-    chunkFilename: '[name].bundle.js',
-    filename: '[name].bundle.js',
+    filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist')
     /* publicPath: 'dist/' */
+  },
+  optimization: {
+    tuntimeChunk: 'single'
   }
 }
