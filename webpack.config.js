@@ -32,6 +32,8 @@ module.exports = {
     /* publicPath: 'dist/' */
   },
   optimization: {
+    // moduleIds: 'deterministic', // webpack v5
+    moduleIds: 'hashed',
     runtimeChunk: 'single',
     splitChunks: {
       cacheGroups: {

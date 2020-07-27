@@ -6,7 +6,7 @@ function component() {
   const btn = document.createElement('button')
   const br = document.createElement('br')
 
-  btn.innerHTML = 'Click me and check the console!'
+  btn.innerHTML = 'Click me and check the console!!!'
   element.innerHTML = _.join(['Hello', 'webpack'], ' ')
   element.appendChild(br)
   element.appendChild(btn)
