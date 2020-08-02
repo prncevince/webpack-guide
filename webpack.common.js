@@ -16,22 +16,8 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      title: 'Production'
-    })
+    new CleanWebpackPlugin()
   ],
-  devServer: {
-    contentBase: './dist',
-    // not working with splitchunks :(
-    hot: true
-  },
-  output: {
-    filename: '[name].js',
-    // filename: '[name].[contenthash].js',
-    path: path.resolve(__dirname, 'dist')
-    /* publicPath: 'dist/' */
-  },
   optimization: {
     // v5 sets usedExports to true by default
     usedExports: true,
