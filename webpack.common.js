@@ -3,16 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
-  mode: 'production',
-  //mode: 'development',
   entry: {
     index: './src/index.js'
-  },
-  devtool: 'inline-source-map',
-  devServer: {
-    contentBase: './dist'
-    // does not work with [contenthash] output names!
-    // hot: true
   },
   module: {
     rules: [
@@ -26,11 +18,17 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Tree Shaking'
+      title: 'Production'
     })
   ],
+  devServer: {
+    contentBase: './dist',
+    // not working with splitchunks :(
+    hot: true
+  },
   output: {
-    filename: '[name].[contenthash].js',
+    filename: '[name].js',
+    // filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist')
     /* publicPath: 'dist/' */
   },
