@@ -3,27 +3,30 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
+  //mode: 'development',
   entry: {
     index: './src/index.js'
   },
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',
-    hot: true
+    // not working with splitchunks :(
+    // hot: true
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader'],
+        sideEffects: true
       }
     ]
   },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Caching'
+      title: 'Tree Shaking'
     })
   ],
   output: {
@@ -32,6 +35,8 @@ module.exports = {
     /* publicPath: 'dist/' */
   },
   optimization: {
+    // v5 sets usedExports to true by default
+    usedExports: true,
     // moduleIds: 'deterministic', // webpack v5
     moduleIds: 'hashed',
     runtimeChunk: 'single',
