@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { join } from 'lodash'
 import './style.css'
 import { cube } from './math.js'
 
@@ -8,7 +8,7 @@ function component() {
   const br = document.createElement('br')
 
   btn.innerHTML = 'Click me and check the console!!!'
-  element.innerHTML = _.join([
+  element.innerHTML = join([
     'Hello webpack!',
     '5 cubed is equal to ' + cube(5)
   ], '\n\n')
