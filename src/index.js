@@ -1,4 +1,4 @@
-import { join } from 'lodash'
+import { join } from 'lodash-es'
 import './style.css'
 import { cube } from './math.js'
 
