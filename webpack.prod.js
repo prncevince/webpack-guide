@@ -6,6 +6,28 @@ const path = require('path')
 module.exports = merge(common, {
   mode: 'production',
   devtool: 'source-map',
+  module: {
+    rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true,
+            presets: [
+              [
+                '@babel/preset-env',
+                {
+                  modules: false
+                }
+              ]
+            ],
+          }
+        }
+      }
+    ]
+  },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Production'
