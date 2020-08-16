@@ -1,4 +1,7 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
+const path = require('path')
+require('dotenv').config()
 
 module.exports = {
   entry: {
@@ -14,7 +17,10 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new Dotenv({
+      defaults: true
+    })
   ],
   optimization: {
     // v5 sets usedExports to true by default
@@ -31,5 +37,9 @@ module.exports = {
         }
       }
     }
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: process.env.PUBLIC_PATH
   }
 }

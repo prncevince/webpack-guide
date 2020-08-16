@@ -1,7 +1,6 @@
 const { merge } = require('webpack-merge')
 const common = require('./webpack.common')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const path = require('path')
 
 module.exports = merge(common, {
   mode: 'production',
@@ -22,7 +21,7 @@ module.exports = merge(common, {
                   modules: false
                 }
               ]
-            ],
+            ]
           }
         }
       }
@@ -34,8 +33,6 @@ module.exports = merge(common, {
     })
   ],
   output: {
-    filename: '[name].[contenthash].js',
-    path: path.resolve(__dirname, 'dist')
-    /* publicPath: 'dist/' */
-  },
+    filename: '[name].[contenthash].js'
+  }
 })
