@@ -21,6 +21,6 @@ function component() {
     print()
   })
   return element
-} 
+}
 
 document.body.appendChild(component())

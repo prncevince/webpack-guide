@@ -2,7 +2,7 @@ const { merge } = require('webpack-merge')
 const common = require('./webpack.common')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-module.exports = merge(common, {
+const merged = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
@@ -19,3 +19,6 @@ module.exports = merge(common, {
     filename: '[name].js'
   }
 })
+
+merged.module.rules.reverse()
+module.exports = merged

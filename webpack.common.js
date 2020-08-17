@@ -14,11 +14,16 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
         sideEffects: true
       },
-      // {
-      //   test: /\.m?js$/,
-      //   exclude: /node_modules/,
-      //   loader: 'eslint-loader',
-      // }
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+        options: {
+          cache: true,
+          emitWarning: true,
+          fix: true
+        }
+      }
     ]
   },
   plugins: [
