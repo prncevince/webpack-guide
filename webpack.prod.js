@@ -24,6 +24,16 @@ module.exports = merge(common, {
             ]
           }
         }
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+        options: {
+          cache: true,
+          emitWarning: true,
+          fix: true
+        }
       }
     ]
   },

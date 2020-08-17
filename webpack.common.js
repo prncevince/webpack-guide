@@ -13,7 +13,12 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
         sideEffects: true
-      }
+      },
+      // {
+      //   test: /\.m?js$/,
+      //   exclude: /node_modules/,
+      //   loader: 'eslint-loader',
+      // }
     ]
   },
   plugins: [
