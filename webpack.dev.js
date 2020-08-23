@@ -20,5 +20,5 @@ const merged = merge(common, {
   }
 })
 
-merged.module.rules.reverse()
+merged.module.rules.filter(o => Boolean(o.use)).filter(o => o.use[0] === 'css-loader')[0].use.unshift('style-loader')
 module.exports = merged

@@ -1,5 +1,6 @@
 import { join } from 'lodash-es'
 import './style.css'
+import './style'
 import { cube } from './math.js'
 
 function component() {

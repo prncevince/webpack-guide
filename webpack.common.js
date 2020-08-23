@@ -10,8 +10,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.(sa|sc|c)ss$/,
+        exclude: /node_modules/,
+        use: [
+          'css-loader'
+        ],
         sideEffects: true
       },
       {
@@ -44,6 +47,11 @@ module.exports = {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendors',
           chunks: 'all'
+        },
+        style: {
+          test: /\.(sa|sc|c)ss$/,
+          chunks: 'all',
+          name: 'styles'
         }
       }
     }
