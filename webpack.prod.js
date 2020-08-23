@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const PurgecssPlugin = require('purgecss-webpack-plugin')
 const glob = require('glob')
 const path = require('path')
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 const PURGE_PATHS = {
   src: path.join(__dirname, 'src')
@@ -25,18 +25,7 @@ const merged = merge(common, {
     new PurgecssPlugin({
       paths: glob.sync(`${PURGE_PATHS.src}/**/*`, { nodir: true })
     }),
-    new OptimizeCssAssetsPlugin({
-      // cssnano configuration
-      cssProcessorPluginOptions: {
-        preset: [
-          'default', {
-            discardComments: {
-              removeAll: true
-            }
-          }
-        ]
-      }
-    })
+    new CssMinimizerPlugin({})
   ],
   output: {
     filename: '[name].[contenthash].js'
