@@ -2,6 +2,13 @@ const { merge } = require('webpack-merge')
 const common = require('./webpack.common')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const PurgecssPlugin = require('purgecss-webpack-plugin')
+const glob = require('glob')
+const path = require('path')
+
+const PURGE_PATHS = {
+  src: path.join(__dirname, 'src')
+}
 
 const merged = merge(common, {
   mode: 'production',
@@ -13,6 +20,9 @@ const merged = merge(common, {
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
       // chunkFilename: '[id].[contenthash].css'
+    }),
+    new PurgecssPlugin({
+      paths: glob.sync(`${PURGE_PATHS.src}/**/*`, { nodir: true })
     })
   ],
   output: {
