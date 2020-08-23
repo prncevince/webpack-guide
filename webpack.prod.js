@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const PurgecssPlugin = require('purgecss-webpack-plugin')
 const glob = require('glob')
 const path = require('path')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 const PURGE_PATHS = {
   src: path.join(__dirname, 'src')
@@ -18,11 +19,23 @@ const merged = merge(common, {
       title: 'Production'
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
+      filename: '[name].[contenthash].css'
       // chunkFilename: '[id].[contenthash].css'
     }),
     new PurgecssPlugin({
       paths: glob.sync(`${PURGE_PATHS.src}/**/*`, { nodir: true })
+    }),
+    new OptimizeCssAssetsPlugin({
+      // cssnano configuration
+      cssProcessorPluginOptions: {
+        preset: [
+          'default', {
+            discardComments: {
+              removeAll: true
+            }
+          }
+        ]
+      }
     })
   ],
   output: {
@@ -58,6 +71,6 @@ const mini = {
   }
 }
 
-merged.module.rules.filter(o => Boolean(o.use)).filter(o => o.use[0] === 'css-loader')[0].use.unshift(mini)
+merged.module.rules.filter(o => Boolean(o.use)).filter(o => o.use.includes('css-loader'))[0].use.unshift(mini)
 merged.module.rules = rules.concat(merged.module.rules)
 module.exports = merged
