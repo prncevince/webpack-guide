@@ -12,7 +12,9 @@ const merged = merge(common, {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Development'
+      title: 'Development',
+      inject: false,
+      template: './index.html'
     })
   ],
   output: {
