@@ -23,7 +23,7 @@ const merged = merge(common, {
       // chunkFilename: '[id].[contenthash].css'
     }),
     new PurgecssPlugin({
-      paths: glob.sync(`${PURGE_PATHS.src}/**/*`, { nodir: true })
+      paths: glob.sync(`${PURGE_PATHS.src}/**/*s`, { nodir: true })
     }),
     new CssMinimizerPlugin({})
   ],
